@@ -1,0 +1,7 @@
+{
+    "api": {
+        "binance": "https://api.binance.com",
+        "coinbase": "https://api.pro.coinbase.com",
+        "kraken": "https://api.kraken.com"
+    }
+}

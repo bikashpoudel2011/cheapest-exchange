@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory": [
+    "tslint-plugin-prettier"
+  ],
+  "rules": {
+    "prettier": true,
+    "max-line-length": [
+      true,
+      120
+    ],
+    "no-floating-promises": true,
+    "ordered-imports": {
+      "options": {
+        "import-sources-order": "case-insensitive",
+        "module-source-path": "full",
+        "named-imports-order": "case-insensitive"
+      }
+    },
+    "interface-name": [
+      true,
+      "always-prefix"
+    ],
+    "array-type": [
+      true,
+      "array-simple"
+    ],
+    "curly": true,
+    "object-literal-sort-keys": false,
+    "no-implicit-dependencies": [
+      true,
+      "dev"
+    ]
+  }
+}

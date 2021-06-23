@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    /* By default, we target Node >9.11.2: https://node.green/#ES2017 */
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    /* Emit declarations, so we get types in the build artifacts. */
+    "declaration": true,
+    /* Emit source maps to make debugging easier. */
+    "sourceMap": true,
+    /* Avoid publishing partially built code. */
+    "noEmitOnError": true,
+    /*
+      Turn on all settings that make TypeScript stricter,
+      so we catch as many things at build time as possible.
+    */
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    /*
+      To make partial typing of dependencies possible
+      and to speed up compilation, skip type-checking of .d.ts files.
+    */
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "outDir": "./build",
+    "rootDir": "./" 
+  },
+  "include": [
+    "src/**/*", "src/e2e/tests",
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "cheapest-crypto-exchange",
+  "version": "1.0.0",
+  "description": "Cheapest crypto exchange API",
+  "main": "build",
+  "scripts": {
+    "typeCheck": "tsc",
+    "test": "npm run typeCheck && npm run lint && jest --roots src",
+    "build": "rimraf build && tsc",
+    "unit": "jest --roots src/api",
+    "e2e": "jest --roots src/e2e",
+    "coverage": "jest --roots src/api --coverage",
+    "dev": "API_PORT=9921 nodemon -r --watch src -e js,ts --ignore *.spec.ts ts-node/register/transpile-only src/api/index.ts",
+    "debug": "API_PORT=9922 node -r ts-node/register/transpile-only --inspect src/api/index.ts",
+    "lint": "tslint -c ./tslint.json 'src/**/*.ts'",
+    "lint:fix": "tslint -c ./tslint.json 'src/**/*.ts' --fix",
+    "start": "node src/api/index.js"
+  },
+  "engines": {
+    "node": ">= 14 < 15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bikashpoudel2011/cheapest-exchange"
+  },
+  "author": "Bikash",
+  "license": "ISC",
+  "homepage": "https://github.com/bikashpoudel2011/cheapest-exchange#readme",
+  "dependencies": {
+    "apollo-datasource": "0.1.3",
+    "apollo-datasource-rest": "0.1.5",
+    "apollo-server": "2.15.0",
+    "apollo-server-testing": "2.15.0",
+    "axios": "0.21.0",
+    "bignumber.js": "9.0.1",
+    "config": "3.3.1",
+    "graphql": "15.5.0",
+    "graphql-iso-date": "3.6.1",
+    "graphql-tools": "7.0.4",
+    "node-fetch": "2.6.1",
+    "winston": "3.3.3"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.37",
+    "@types/jest": "26.0.18",
+    "@types/nodemon": "1.19.0",
+    "@types/rimraf": "3.0.0",
+    "@types/winston": "2.4.4",
+    "apollo-link": "1.2.3",
+    "apollo-link-http": "1.5.5",
+    "jest": "26.6.3",
+    "nodemon": "2.0.6",
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2",
+    "ts-jest": "26.4.4",
+    "ts-node": "9.1.1",
+    "tslint": "6.1.3",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.3.0",
+    "typescript": "4.2.4"
+  }
+}
