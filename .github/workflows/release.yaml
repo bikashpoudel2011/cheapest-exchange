@@ -60,11 +60,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}
+          tags: ${{ steps.version_number_extract.outputs.version }}
 
       -
         name: Image tags
-        run: echo "${{ steps.docker_meta.outputs.tags }}"
+        run: echo "${{ steps.version_number_extract.outputs.version }}"
 
   update-dev-image:
     runs-on: ubuntu-latest
