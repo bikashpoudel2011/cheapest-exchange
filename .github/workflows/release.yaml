@@ -64,9 +64,9 @@ jobs:
     - uses: imranismail/setup-kustomize@v1
       with:
         kustomize-version: 3.8.6
-    - run: git clone https://${GITHUB_TOKEN}@github.com/bikashpoudel2011/fleet-infra.git .
+    - run: git clone https://${REPO_TOKEN}@github.com/bikashpoudel2011/fleet-infra.git .
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        REPO_TOKEN: ${{secrets.REPO_TOKEN}}
     - run: kustomize edit set image bikashpoudel2011/cheapest-exchange:sha-$(git rev-parse --short $GITHUB_SHA)
       working-directory: ./deploy/overlays/staging
     - run: git add .
@@ -87,9 +87,9 @@ jobs:
     - uses: imranismail/setup-kustomize@v1
       with:
         kustomize-version: 3.8.6
-    - run: git clone https://${GITHUB_TOKEN}@github.com/bikashpoudel2011/fleet-infra.git .
+    - run: git clone https://${REPO_TOKEN}@github.com/bikashpoudel2011/fleet-infra.git .
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        REPO_TOKEN: ${{secrets.REPO_TOKEN}}
     - run: kustomize edit set image bikashpoudel2011/cheapest-exchange:${GITHUB_REF#refs/*/}
       working-directory: ./deploy/overlays/production
     - run: git add .
