@@ -14,6 +14,14 @@ export const server = new ApolloServer({
     binance: new Binance(),
     kraken: new Kraken(),
   }),
+  onHealthCheck: () => {
+    return new Promise((resolve) => {
+      // Replace the `true` in this conditional with more specific checks!
+      resolve({
+        pass: true
+      });
+    });
+  }
 });
 
 server

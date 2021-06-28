@@ -28,7 +28,7 @@ spec:
           livenessProbe:
             failureThreshold: 3
             httpGet:
-              path: /
+              path: /.well-known/apollo/server-health
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 20
@@ -38,7 +38,7 @@ spec:
           readinessProbe:
             failureThreshold: 3
             httpGet:
-              path: /
+              path: /.well-known/apollo/server-health
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 30
