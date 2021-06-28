@@ -5,7 +5,8 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchLabels: {}
+    matchLabels:
+      app: cheapest-exchange-api
   revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
@@ -14,7 +15,8 @@ spec:
       maxUnavailable: 50%
   template:
     metadata:
-      labels: {}
+      labels: 
+        app: cheapest-exchange-api
     spec:
       restartPolicy: Always
       serviceAccountName: cheapest-exchange-api
@@ -24,7 +26,7 @@ spec:
           livenessProbe:
             failureThreshold: 3
             httpGet:
-              path: /status/health
+              path: /
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 20
@@ -34,7 +36,7 @@ spec:
           readinessProbe:
             failureThreshold: 3
             httpGet:
-              path: /status/ready
+              path: /
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 30
@@ -54,8 +56,8 @@ spec:
           env:
             - name: ELASTIC_APM_SERVICE_NAME
               value: cheapest-exchange-api
-          envFrom:
-            - secretRef:
-                name: cheapest-exchange-api-config
-            - configMapRef:
-                name: elastic-apm-agent-config
+          # envFrom:
+          #   - secretRef:
+          #       name: cheapest-exchange-api-config
+          #   - configMapRef:
+          #       name: elastic-apm-agent-config

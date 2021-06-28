@@ -1,7 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: cheapest-exchange
+  name: cheapest-exchange-api
+  labels:
+    app: cheapest-exchange-api
 spec:
   type: LoadBalancer
   ports:
@@ -10,4 +12,4 @@ spec:
       port: 80
       targetPort: 8080
   selector:
-    app: cheapest-exchange
+    app: cheapest-exchange-api
