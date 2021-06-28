@@ -78,7 +78,7 @@ jobs:
     - run: git commit -m "Set dev image tag to short sha"
     - run: git push
 
-  update-prd-image:
+  update-production-image:
     runs-on: ubuntu-latest
     if: contains(github.ref, 'tags')
     needs:
