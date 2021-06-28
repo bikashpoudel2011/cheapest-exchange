@@ -2,10 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cheapest-exchange-api
+  labels:
+    app: cheapest-exchange-api
 spec:
-  replicas: 2
   selector:
-    matchLabels: {}
+    matchLabels:
+      app: cheapest-exchange-api
+  replicas: 2
   revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
@@ -14,7 +17,8 @@ spec:
       maxUnavailable: 50%
   template:
     metadata:
-      labels: {}
+      labels:
+        app: cheapest-exchange-api
     spec:
       restartPolicy: Always
       serviceAccountName: cheapest-exchange-api
