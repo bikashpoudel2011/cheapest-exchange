@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cheapest-exchange-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels: {}
+  revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels: {}
+    spec:
+      restartPolicy: Always
+      serviceAccountName: cheapest-exchange-api
+      containers:
+        - name: cheapest-exchange-api
+          image: bikashpoudel2011/cheapest-exchange
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /status/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /status/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 200m
+              memory: 512Mi
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: ELASTIC_APM_SERVICE_NAME
+              value: cheapest-exchange-api
+          envFrom:
+            - secretRef:
+                name: cheapest-exchange-api-config
+            - configMapRef:
+                name: elastic-apm-agent-config

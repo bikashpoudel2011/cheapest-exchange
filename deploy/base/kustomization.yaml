@@ -1,0 +1,13 @@
+commonLabels:
+  app.kubernetes.io/name: cheapest-exchange-api
+commonAnnotations:
+  criticality: low
+  component: api
+  part-of: cheapest-exchange-api
+  oncallteam: platform
+  managed-by: Kustomize
+  repo: https://github.com/bikashpoudel2011/cheapest-exchange-api
+resources:
+  - deployment.yaml
+  - service.yaml
+  - rbac.yaml
