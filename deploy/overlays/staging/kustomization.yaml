@@ -24,3 +24,6 @@ transformers:
 replicas:
 - count: 3
   name: cheapest-exchange-api
+images:
+- name: bikashpoudel2011/cheapest-exchange
+  newTag: sha-e8704fe
