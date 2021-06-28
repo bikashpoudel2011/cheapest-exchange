@@ -31,7 +31,7 @@ COPY tslint.json /cheapest-exchange-api/tslint.json
 RUN npm run build
 
 #needed by Code Climate Reporter
-COPY .git /cheapest-exchange-api/.git
+# COPY .git /cheapest-exchange-api/.git
 
 ENTRYPOINT ["/bin/sh"]
 
