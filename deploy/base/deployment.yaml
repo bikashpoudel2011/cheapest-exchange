@@ -5,8 +5,7 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchLabels:
-      app: cheapest-exchange-api
+    matchLabels: {}
   revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
@@ -15,8 +14,7 @@ spec:
       maxUnavailable: 50%
   template:
     metadata:
-      labels: 
-        app: cheapest-exchange-api
+      labels: {}
     spec:
       restartPolicy: Always
       serviceAccountName: cheapest-exchange-api
